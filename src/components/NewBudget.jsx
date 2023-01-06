@@ -2,7 +2,7 @@ import React from "react";
 import Error from "./Error";
 import { useState } from "react";
 
-function NewBudget({ budget, setBudget }) {
+function NewBudget({ budget, setBudget, setIsValidBudget }) {
   const [message, setMessage] = useState("");
 
   const handleBudget = (e) => {
@@ -13,6 +13,7 @@ function NewBudget({ budget, setBudget }) {
       return;
     } else {
       setMessage("");
+      setIsValidBudget(true);
     }
   };
 
