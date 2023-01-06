@@ -1,8 +1,8 @@
 import React from "react";
 
 function BudgetControl({ budget }) {
-  const formatQuantity = (count) => {
-    return count.toLocaleString("en-US", {
+  const formatQuantity = (amount) => {
+    return amount.toLocaleString("en-US", {
       style: "currency",
       currency: "USD",
     });
