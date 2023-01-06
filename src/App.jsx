@@ -1,7 +1,10 @@
 import Header from "./components/Header";
+import { useState } from "react";
 
 function App() {
-  return <Header />;
+  const [budget, setBudget] = useState(0);
+
+  return <Header budget={budget} setBudget={setBudget} />;
 }
 
 export default App;
