@@ -12,6 +12,9 @@ function App() {
     setModal(true);
   };
 
+  const handleClose = () => {
+    setModal(false);
+  };
   return (
     <>
       <Header
@@ -22,7 +25,7 @@ function App() {
       />
       {isValidBudget && <IconPlus handleNewExpense={handleNewExpense} />}
 
-      {modal && <Modal />}
+      <Modal handleClose={handleClose} modal={modal} />
     </>
   );
 }
