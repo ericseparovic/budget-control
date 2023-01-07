@@ -1,10 +1,10 @@
 import React from "react";
 import ImgPlus from "../assets/icons/plus.png";
 
-function IconPlus() {
+function IconPlus({ handleNewExpense }) {
   return (
     <div className="w-8 fixed right-10 bottom-10 cursor-pointer">
-      <img src={ImgPlus} alt="Icon-plus" />
+      <img onClick={handleNewExpense} src={ImgPlus} alt="Icon-plus" />
     </div>
   );
 }
