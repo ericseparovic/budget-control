@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import { useState } from "react";
 import IconPlus from "./components/IconPlus";
 import Modal from "./components/Modal";
+import Main from "./components/Main";
 
 function App() {
   const [budget, setBudget] = useState(0);
@@ -25,7 +26,15 @@ function App() {
         isValidBudget={isValidBudget}
         setIsValidBudget={setIsValidBudget}
       />
-      {isValidBudget && <IconPlus handleNewExpense={handleNewExpense} />}
+      {isValidBudget &&
+        (
+          <>
+            <IconPlus handleNewExpense={handleNewExpense} />
+            <Main />
+
+          </>
+        )
+      }
 
       <Modal
         handleClose={handleClose}

@@ -8,7 +8,7 @@ function BudgetControl({ budget }) {
     });
   };
   return (
-    <div className="bg-slate-50 rounded-xl flex justify-center gap-4 p-6 shadow-xl">
+    <div className="max-w-xl flex m-auto gap-5 bg-white p-4 rounded-lg shadow-2xl absolute left-0 right-0 top-32 h-40">
       <div>
         <h3>Grafica</h3>
       </div>
