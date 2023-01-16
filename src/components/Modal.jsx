@@ -1,8 +1,9 @@
 import React from "react";
+import nextId from "react-id-generator";
 import ImgClose from "../assets/icons/close.png";
 import { useForm } from "react-hook-form";
 
-function Modal({ handleClose, modal }) {
+function Modal({ handleClose, modal, setExpenses, expenses }) {
   const {
     register,
     handleSubmit,
@@ -11,9 +12,11 @@ function Modal({ handleClose, modal }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    data.id = nextId()
+    setExpenses([...expenses, data]);
     reset();
   };
+
   return (
     <div
       className={`absolute bg-slate-600 w-full h-screen top-0 mx-auto transition-all translate-x-full duration-300  ${
@@ -41,7 +44,7 @@ function Modal({ handleClose, modal }) {
               Name Expense
             </label>
             <input
-              type="number"
+              type="text"
               placeholder="Add expense"
               className="rounded-md p-1 text-gray-600 outline-purple-700"
               id="amount"

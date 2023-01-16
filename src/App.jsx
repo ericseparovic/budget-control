@@ -7,6 +7,7 @@ function App() {
   const [budget, setBudget] = useState(0);
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
+  const [expenses, setExpenses] = useState([]);
 
   const handleNewExpense = () => {
     setModal(true);
@@ -15,6 +16,7 @@ function App() {
   const handleClose = () => {
     setModal(false);
   };
+
   return (
     <>
       <Header
@@ -25,7 +27,12 @@ function App() {
       />
       {isValidBudget && <IconPlus handleNewExpense={handleNewExpense} />}
 
-      <Modal handleClose={handleClose} modal={modal} />
+      <Modal
+        handleClose={handleClose}
+        modal={modal}
+        setExpenses={setExpenses}
+        expenses={expenses}
+      />
     </>
   );
 }
