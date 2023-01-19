@@ -3,7 +3,7 @@ import nextId from "react-id-generator";
 import ImgClose from "../assets/icons/close.png";
 import { useForm } from "react-hook-form";
 
-function Modal({ handleClose, modal, setExpenses, expenses }) {
+function Modal({ handleClose, modal, setExpenses, expenses, setModal }) {
   const {
     register,
     handleSubmit,
@@ -15,11 +15,12 @@ function Modal({ handleClose, modal, setExpenses, expenses }) {
     data.id = nextId()
     setExpenses([...expenses, data]);
     reset();
+    setModal(false)
   };
 
   return (
     <div
-      className={`absolute bg-slate-600 w-full h-screen top-0 mx-auto transition-all translate-x-full duration-300 max-h-screen ${
+      className={`fixed bg-slate-600 w-full h-screen top-0 mx-auto transition-all translate-x-full duration-300 max-h-screen ${
         modal && "translate-x-0"
       }`}
     >

@@ -19,7 +19,7 @@ function App() {
   };
 
   return (
-    <div className="overflow-y-hidden">
+    <div>
        <Header
         budget={budget}
         setBudget={setBudget}
@@ -41,6 +41,7 @@ function App() {
         modal={modal}
         setExpenses={setExpenses}
         expenses={expenses}
+    setModal={setModal}
       />
     </div>
   )
