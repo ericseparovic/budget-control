@@ -1,6 +1,6 @@
 import React from "react";
 
-function BudgetControl({ budget }) {
+function BudgetControl({ budget, totalSpent}) {
   const formatQuantity = (amount) => {
     return amount.toLocaleString("en-US", {
       style: "currency",
@@ -24,7 +24,7 @@ function BudgetControl({ budget }) {
 
         <p className="text-purple-700 font-bold">
           Gastado:{" "}
-          <span className="text-gray-500">{formatQuantity(budget)}</span>
+          <span className="text-gray-500">{formatQuantity(totalSpent)}</span>
         </p>
       </div>
     </div>
