@@ -19,7 +19,7 @@ function Modal({ handleClose, modal, setExpenses, expenses }) {
 
   return (
     <div
-      className={`absolute bg-slate-600 w-full h-screen top-0 mx-auto transition-all translate-x-full duration-300  ${
+      className={`absolute bg-slate-600 w-full h-screen top-0 mx-auto transition-all translate-x-full duration-300 max-h-screen ${
         modal && "translate-x-0"
       }`}
     >
@@ -89,8 +89,13 @@ function Modal({ handleClose, modal, setExpenses, expenses }) {
               <option value={""} disabled>
                 --Select--
               </option>
-              <option value="Car">Car</option>
-              <option value="Shopping">Shopping</option>
+              <option value="casa">House</option>
+              <option value="ocio">Leisure</option>
+              <option value="ahorro">Saving</option>
+              <option value="comida">Food</option>
+              <option value="gastos">Cost</option>
+              <option value="salud">Health</option>
+              <option value="suscripciones">Subscriptions</option>
             </select>
             {errors.category && (
               <span className="text-pink-200 mt-2">This field is required</span>

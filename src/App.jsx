@@ -19,19 +19,19 @@ function App() {
   };
 
   return (
-    <>
-      <Header
+    <div className="overflow-y-hidden">
+       <Header
         budget={budget}
         setBudget={setBudget}
         isValidBudget={isValidBudget}
         setIsValidBudget={setIsValidBudget}
+        modal={modal}
       />
       {isValidBudget &&
         (
           <>
             <IconPlus handleNewExpense={handleNewExpense} />
-            <Main />
-
+            <Main expenses={expenses} />
           </>
         )
       }
@@ -42,8 +42,8 @@ function App() {
         setExpenses={setExpenses}
         expenses={expenses}
       />
-    </>
-  );
+    </div>
+  )
 }
 
 export default App;
