@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-function BudgetControl({ budget, totalSpent }) {
+function BudgetControl({ budget, totalSpent, totalAvailable}) {
   const formatQuantity = (amount) => {
     return amount.toLocaleString("en-US", {
       style: "currency",
       currency: "USD",
     });
   };
+
+
+
   return (
     <div className="max-w-xl flex m-auto gap-5 bg-white p-4 rounded-lg shadow-2xl absolute left-0 right-0 top-32 h-40">
       <div>
@@ -19,7 +22,7 @@ function BudgetControl({ budget, totalSpent }) {
         </p>
         <p className="text-purple-700 font-bold">
           Disponible:{" "}
-          <span className="text-gray-500">{formatQuantity(budget)}</span>
+          <span className="text-gray-500">{formatQuantity(totalAvailable)}</span>
         </p>
 
         <p className="text-purple-700 font-bold">

@@ -10,7 +10,7 @@ function App() {
   const [modal, setModal] = useState(false);
   const [expenses, setExpenses] = useState([]);
   const [totalSpent, setTotalSpent] = useState(0)
-  const [totalAvailable, setTotalAvailable] = useState(0)
+  const [totalAvailable, setTotalAvailable] = useState(budget)
 
   const handleNewExpense = () => {
     setModal(true);
@@ -29,8 +29,6 @@ function App() {
   function calcTotalSpent(){
     let totalSpent = 0
     expenses.map(expense => {
-
-
       totalSpent +=  Number(expense.amount)
     })
 
@@ -38,11 +36,10 @@ function App() {
 
   }
 
-
   useEffect(() => {
     calcTotalAvailable()
-
   }, [totalSpent])
+
 
 //Calc totalSpent
   function calcTotalAvailable(){
@@ -54,13 +51,12 @@ function App() {
     })
 
     setTotalAvailable(total)
-
   }
 
+//saves the quantity available when the budget is indicated
   useEffect(() => {
-
-    console.log(totalAvailable)
-  }, [totalAvailable])
+    setTotalAvailable(budget)
+  }, [budget])
 
   return (
     <div>
@@ -71,6 +67,7 @@ function App() {
         setIsValidBudget={setIsValidBudget}
         modal={modal}
         totalSpent={totalSpent}
+        totalAvailable={totalAvailable}
       />
       {isValidBudget &&
         (
