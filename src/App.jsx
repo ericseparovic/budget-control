@@ -9,8 +9,8 @@ function App() {
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [expenses, setExpenses] = useState([]);
-  const [totalSpent, setTotalSpent] = useState(0)
-  const [totalAvailable, setTotalAvailable] = useState(budget)
+  const [totalSpent, setTotalSpent] = useState(0);
+  const [totalAvailable, setTotalAvailable] = useState(budget);
 
   const handleNewExpense = () => {
     setModal(true);
@@ -21,42 +21,41 @@ function App() {
   };
 
   useEffect(() => {
-    calcTotalSpent()
-
-  }, [expenses])
+    calcTotalSpent();
+  }, [expenses]);
 
   //Calc totalSpent
-  function calcTotalSpent(){
-    let totalSpent = 0
-    expenses.map(expense => {
-      totalSpent +=  Number(expense.amount)
-    })
+  function calcTotalSpent() {
+    let totalSpent = 0;
+    expenses.map((expense) => {
+      totalSpent += Number(expense.amount);
+    });
 
-    setTotalSpent(totalSpent)
-
+    setTotalSpent(totalSpent);
   }
 
   useEffect(() => {
-    calcTotalAvailable()
-  }, [totalSpent])
+    calcTotalAvailable();
+  }, [totalSpent]);
 
+  //Calc totalSpent
+  function calcTotalAvailable() {
+    let total = 0;
+    expenses.map((expense) => {
+      total = Number(budget) - totalSpent;
+    });
 
-//Calc totalSpent
-  function calcTotalAvailable(){
-    let total = 0
-    expenses.map(expense => {
-
-
-      total = Number(budget) - totalSpent
-    })
-
-    setTotalAvailable(total)
+    setTotalAvailable(total);
   }
 
-//saves the quantity available when the budget is indicated
+  //saves the quantity available when the budget is indicated
   useEffect(() => {
-    setTotalAvailable(budget)
-  }, [budget])
+    setTotalAvailable(budget);
+  }, [budget]);
+
+  function handleEdit() {
+    console.log("edit");
+  }
 
   return (
     <div>
@@ -69,14 +68,12 @@ function App() {
         totalSpent={totalSpent}
         totalAvailable={totalAvailable}
       />
-      {isValidBudget &&
-        (
-          <>
-            <IconPlus handleNewExpense={handleNewExpense} />
-            <Main expenses={expenses} />
-          </>
-        )
-      }
+      {isValidBudget && (
+        <>
+          <IconPlus handleNewExpense={handleNewExpense} />
+          <Main expenses={expenses} handleEdit={handleEdit} />
+        </>
+      )}
 
       <Modal
         handleClose={handleClose}
@@ -86,7 +83,7 @@ function App() {
         setModal={setModal}
       />
     </div>
-  )
+  );
 }
 
 export default App;
