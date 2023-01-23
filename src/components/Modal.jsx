@@ -1,22 +1,48 @@
-import React from "react";
+import { useEffect } from "react";
 import nextId from "react-id-generator";
 import ImgClose from "../assets/icons/close.png";
 import { useForm } from "react-hook-form";
 
-function Modal({ handleClose, modal, setExpenses, expenses, setModal }) {
+function Modal({
+  handleClose,
+  modal,
+  setExpenses,
+  expenses,
+  setModal,
+  expenseEdit,
+}) {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
+    setValue,
   } = useForm();
 
   const onSubmit = (data) => {
-    data.id = nextId()
-    setExpenses([...expenses, data]);
+    //Update
+    if (data.id) {
+      const expensesUpdate = expenses.map((expenseState) =>
+        expenseState.id === data.id ? data : expenseState
+      );
+
+      setExpenses(expensesUpdate);
+    } else {
+      //New expense
+      data.id = nextId();
+      setExpenses([...expenses, data]);
+    }
+
     reset();
-    setModal(false)
+    setModal(false);
   };
+
+  useEffect(() => {
+    setValue("expense", expenseEdit.expense);
+    setValue("amount", expenseEdit.amount);
+    setValue("category", expenseEdit.category);
+    setValue("id", expenseEdit.id);
+  }, [expenseEdit]);
 
   return (
     <div
@@ -29,7 +55,7 @@ function Modal({ handleClose, modal, setExpenses, expenses, setModal }) {
       </div>
       <div className="flex place-items-center p-10 flex-col max-w-md mx-auto">
         <h3 className="text-2xl text-white uppercase mb-10 mt-10 font-bold">
-          New Expense
+          {expenseEdit.expense ? "Edit Expense" : "New Expense"}
         </h3>
 
         <form
@@ -104,7 +130,7 @@ function Modal({ handleClose, modal, setExpenses, expenses, setModal }) {
           </div>
           <input
             type="submit"
-            value="Add"
+            value={expenseEdit.expense ? "Save Changes" : "Add"}
             className="bg-purple-800 rounded-md p-1 text-white font-bold hover:bg-purple-900 cursor-pointer"
           />
         </form>

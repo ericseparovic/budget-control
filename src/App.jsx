@@ -11,9 +11,12 @@ function App() {
   const [expenses, setExpenses] = useState([]);
   const [totalSpent, setTotalSpent] = useState(0);
   const [totalAvailable, setTotalAvailable] = useState(budget);
+  const [expenseEdit, setExpenseEdit] = useState({});
 
   const handleNewExpense = () => {
     setModal(true);
+
+    setExpenseEdit({});
   };
 
   const handleClose = () => {
@@ -53,9 +56,10 @@ function App() {
     setTotalAvailable(budget);
   }, [budget]);
 
-  function handleEdit() {
-    console.log("edit");
-  }
+  useEffect(() => {
+    if (Object.keys(expenseEdit).length > 0) {
+    }
+  }, [expenseEdit]);
 
   return (
     <div>
@@ -71,7 +75,12 @@ function App() {
       {isValidBudget && (
         <>
           <IconPlus handleNewExpense={handleNewExpense} />
-          <Main expenses={expenses} handleEdit={handleEdit} />
+          <Main
+            expenses={expenses}
+            setExpenseEdit={setExpenseEdit}
+            setModal={setModal}
+            setExpenses={setExpenses}
+          />
         </>
       )}
 
@@ -81,6 +90,7 @@ function App() {
         setExpenses={setExpenses}
         expenses={expenses}
         setModal={setModal}
+        expenseEdit={expenseEdit}
       />
     </div>
   );

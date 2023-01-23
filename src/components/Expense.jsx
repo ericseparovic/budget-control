@@ -18,8 +18,18 @@ const iconsExpenses = {
   comida: IconComida,
 };
 
-function Expense({ data, handleEdit }) {
+function Expense({ data, setExpenseEdit, setModal, setExpenses }) {
   const { amount, category, expense } = data;
+
+  //Edit expense
+  function handleEdit() {
+    //Open modal
+    setModal(true);
+    setExpenseEdit(data);
+  }
+
+  function handleRemove() {}
+
   return (
     <div className="w-full max-w-xl flex m-auto gap-5 bg-white  rounded-lg shadow-2xl  h-40 items-center justify-between p-4">
       <div className="w-32">
@@ -40,7 +50,7 @@ function Expense({ data, handleEdit }) {
           <img src={IconEdit} alt="icon-edit" onClick={handleEdit} />
         </div>
         <div className="w-5 cursor-pointer">
-          <img src={IconRemove} alt="icon-remove" />
+          <img src={IconRemove} alt="icon-remove" onClick={handleRemove} />
         </div>
       </div>
     </div>
