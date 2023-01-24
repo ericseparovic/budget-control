@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import { useEffect, useState } from "react";
 import IconPlus from "./components/IconPlus";
 import Modal from "./components/Modal";
-import Main from "./components/Main";
+import ListExpenses from "./components/ListExpenses";
 
 function App() {
   const [budget, setBudget] = useState(0);
@@ -15,7 +15,6 @@ function App() {
 
   const handleNewExpense = () => {
     setModal(true);
-
     setExpenseEdit({});
   };
 
@@ -23,43 +22,42 @@ function App() {
     setModal(false);
   };
 
-  useEffect(() => {
-    calcTotalSpent();
-  }, [expenses]);
-
   //Calc totalSpent
-  function calcTotalSpent() {
+  const calcTotalSpent = () => {
     let totalSpent = 0;
     expenses.map((expense) => {
       totalSpent += Number(expense.amount);
     });
 
     setTotalSpent(totalSpent);
-  }
-
-  useEffect(() => {
-    calcTotalAvailable();
-  }, [totalSpent]);
+  };
 
   //Calc totalSpent
-  function calcTotalAvailable() {
+  const calcTotalAvailable = () => {
     let total = 0;
     expenses.map((expense) => {
       total = Number(budget) - totalSpent;
     });
 
     setTotalAvailable(total);
-  }
+  };
 
-  //saves the quantity available when the budget is indicated
+  const removeExpense = (id) => {
+    const updateExpense = expenses.filter((expense) => expense.id !== id);
+    setExpenses(updateExpense);
+  };
+
+  useEffect(() => {
+    calcTotalSpent();
+  }, [expenses]);
+
+  useEffect(() => {
+    calcTotalAvailable();
+  }, [totalSpent]);
+
   useEffect(() => {
     setTotalAvailable(budget);
   }, [budget]);
-
-  useEffect(() => {
-    if (Object.keys(expenseEdit).length > 0) {
-    }
-  }, [expenseEdit]);
 
   return (
     <div>
@@ -75,11 +73,11 @@ function App() {
       {isValidBudget && (
         <>
           <IconPlus handleNewExpense={handleNewExpense} />
-          <Main
+          <ListExpenses
             expenses={expenses}
             setExpenseEdit={setExpenseEdit}
             setModal={setModal}
-            setExpenses={setExpenses}
+            removeExpense={removeExpense}
           />
         </>
       )}

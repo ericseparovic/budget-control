@@ -18,8 +18,8 @@ const iconsExpenses = {
   comida: IconComida,
 };
 
-function Expense({ data, setExpenseEdit, setModal, setExpenses }) {
-  const { amount, category, expense } = data;
+function Expense({ data, setExpenseEdit, setModal, removeExpense }) {
+  const { amount, category, expense, id } = data;
 
   //Edit expense
   function handleEdit() {
@@ -27,8 +27,6 @@ function Expense({ data, setExpenseEdit, setModal, setExpenses }) {
     setModal(true);
     setExpenseEdit(data);
   }
-
-  function handleRemove() {}
 
   return (
     <div className="w-full max-w-xl flex m-auto gap-5 bg-white  rounded-lg shadow-2xl  h-40 items-center justify-between p-4">
@@ -50,7 +48,11 @@ function Expense({ data, setExpenseEdit, setModal, setExpenses }) {
           <img src={IconEdit} alt="icon-edit" onClick={handleEdit} />
         </div>
         <div className="w-5 cursor-pointer">
-          <img src={IconRemove} alt="icon-remove" onClick={handleRemove} />
+          <img
+            src={IconRemove}
+            alt="icon-remove"
+            onClick={() => removeExpense(id)}
+          />
         </div>
       </div>
     </div>

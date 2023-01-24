@@ -1,6 +1,6 @@
 import Expense from "./Expense";
 
-function Main({ expenses, setExpenseEdit, setModal, setExpenses }) {
+function Main({ expenses, setExpenseEdit, setModal, removeExpense }) {
   return (
     <main className="container mt-36 mx-auto text-center w-full">
       <h2 className="text-slate-700 font-bold text-xl">Expenses</h2>
@@ -12,7 +12,7 @@ function Main({ expenses, setExpenseEdit, setModal, setExpenses }) {
               key={data.id}
               setExpenseEdit={setExpenseEdit}
               setModal={setModal}
-              setExpenses={setExpenses}
+              removeExpense={removeExpense}
             />
           );
         })}
