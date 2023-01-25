@@ -1,6 +1,6 @@
 import Expense from "./Expense";
 
-function Main({ expenses, setExpenseEdit, setModal, removeExpense }) {
+function ListExpenses({ expenses, setExpenseEdit, setModal, removeExpense }) {
   return (
     <main className="container mt-36 mx-auto text-center w-full">
       <h2 className="text-slate-700 font-bold text-xl">Expenses</h2>
@@ -21,4 +21,4 @@ function Main({ expenses, setExpenseEdit, setModal, removeExpense }) {
   );
 }
 
-export default Main;
+export default ListExpenses;

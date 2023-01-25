@@ -1,8 +1,8 @@
 import Header from "./components/Header";
 import { useEffect, useState } from "react";
 import IconPlus from "./components/IconPlus";
-import Modal from "./components/Modal";
 import ListExpenses from "./components/ListExpenses";
+import Modal from "./components/Modal";
 
 function App() {
   const [budget, setBudget] = useState(0);
@@ -12,6 +12,7 @@ function App() {
   const [totalSpent, setTotalSpent] = useState(0);
   const [totalAvailable, setTotalAvailable] = useState(budget);
   const [expenseEdit, setExpenseEdit] = useState({});
+  const [percentage, setPercentage] = useState(0);
 
   const handleNewExpense = () => {
     setModal(true);
@@ -69,6 +70,7 @@ function App() {
         modal={modal}
         totalSpent={totalSpent}
         totalAvailable={totalAvailable}
+        percentage={percentage}
       />
       {isValidBudget && (
         <>
