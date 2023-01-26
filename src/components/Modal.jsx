@@ -28,7 +28,7 @@ function Modal({
         if (expenseState.id === data.id) {
           return data;
         } else {
-          expenseState;
+          return expenseState;
         }
       });
 
@@ -49,6 +49,7 @@ function Modal({
     setValue("amount", expenseEdit.amount);
     setValue("category", expenseEdit.category);
     setValue("id", expenseEdit.id);
+    setValue("date", expenseEdit.date);
   }, [expenseEdit]);
 
   return (

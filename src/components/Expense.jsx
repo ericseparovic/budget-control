@@ -27,6 +27,7 @@ function Expense({ data, setExpenseEdit, setModal, removeExpense }) {
     setModal(true);
     setExpenseEdit(data);
   }
+  console.log(date);
 
   return (
     <div className="max-w-sm w-full  flex m-auto gap-5 bg-white  rounded-lg shadow-2xl  h-28 items-center justify-between p-4">
@@ -38,7 +39,7 @@ function Expense({ data, setExpenseEdit, setModal, removeExpense }) {
           <p className="text-slate-600 font-bold">{category}</p>
           <p className="text-slate-800">{expense}</p>
           <p className="text-slate-800 text-xs">
-            {date.toLocaleDateString("en-US")}
+            {date !== undefined && date.toLocaleDateString("en-US")}
           </p>
         </div>
         <div>
