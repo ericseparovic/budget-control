@@ -29,7 +29,7 @@ function Expense({ data, setExpenseEdit, setModal, removeExpense }) {
   }
 
   return (
-    <div className="w-full max-w-xl flex m-auto gap-5 bg-white  rounded-lg shadow-2xl  h-40 items-center justify-between p-4">
+    <div className="max-w-sm  flex m-auto gap-5 bg-white  rounded-lg shadow-2xl  h-28 items-center justify-between p-4">
       <div className="w-32">
         <img src={iconsExpenses[`${category}`]} alt="icon-ahorro" />
       </div>
@@ -43,11 +43,11 @@ function Expense({ data, setExpenseEdit, setModal, removeExpense }) {
       <div>
         <h6 className="font-bold text-lg text-slate-800">${amount}</h6>
       </div>
-      <div className="flex gap-2 justify-center w-1/5 h-full items-center text-center  rounded-r-lg  text-white p-4 font-bold">
-        <div className="w-5 cursor-pointer">
+      <div className="flex gap-2 justify-center w-20  h-full items-center text-center  rounded-r-lg  text-white p-4 font-bold">
+        <div className="w-10 cursor-pointer">
           <img src={IconEdit} alt="icon-edit" onClick={handleEdit} />
         </div>
-        <div className="w-5 cursor-pointer">
+        <div className="w-10 cursor-pointer">
           <img
             src={IconRemove}
             alt="icon-remove"
