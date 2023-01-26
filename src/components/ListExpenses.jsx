@@ -1,6 +1,13 @@
 import Expense from "./Expense";
+import IconPlus from "./IconPlus";
 
-function ListExpenses({ expenses, setExpenseEdit, setModal, removeExpense }) {
+function ListExpenses({
+  expenses,
+  setExpenseEdit,
+  setModal,
+  removeExpense,
+  handleNewExpense,
+}) {
   return (
     <main className="container mt-36 mb-20 mx-auto text-center w-full flex flex-col items-center">
       {expenses.length > 0 ? (
@@ -12,7 +19,7 @@ function ListExpenses({ expenses, setExpenseEdit, setModal, removeExpense }) {
           There are no recorded expenses
         </h2>
       )}
-      <div className="flex flex-col gap-3 w-full mt-10">
+      <div className="flex flex-col gap-3 w-full mt-10 relative max-w-sm">
         {expenses.map((data) => {
           return (
             <Expense
@@ -24,6 +31,8 @@ function ListExpenses({ expenses, setExpenseEdit, setModal, removeExpense }) {
             />
           );
         })}
+
+        <IconPlus handleNewExpense={handleNewExpense} />
       </div>
     </main>
   );

@@ -1,6 +1,5 @@
 import Header from "./components/Header";
 import { useEffect, useState } from "react";
-import IconPlus from "./components/IconPlus";
 import ListExpenses from "./components/ListExpenses";
 import Modal from "./components/Modal";
 
@@ -92,12 +91,12 @@ function App() {
       />
       {isValidBudget && (
         <>
-          <IconPlus handleNewExpense={handleNewExpense} />
           <ListExpenses
             expenses={expenses}
             setExpenseEdit={setExpenseEdit}
             setModal={setModal}
             removeExpense={removeExpense}
+            handleNewExpense={handleNewExpense}
           />
         </>
       )}
