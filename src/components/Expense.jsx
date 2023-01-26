@@ -19,7 +19,7 @@ const iconsExpenses = {
 };
 
 function Expense({ data, setExpenseEdit, setModal, removeExpense }) {
-  const { amount, category, expense, id } = data;
+  const { amount, category, expense, id, date } = data;
 
   //Edit expense
   function handleEdit() {
@@ -29,25 +29,27 @@ function Expense({ data, setExpenseEdit, setModal, removeExpense }) {
   }
 
   return (
-    <div className="max-w-sm  flex m-auto gap-5 bg-white  rounded-lg shadow-2xl  h-28 items-center justify-between p-4">
-      <div className="w-32">
+    <div className="max-w-sm w-full  flex m-auto gap-5 bg-white  rounded-lg shadow-2xl  h-28 items-center justify-between p-4">
+      <div className="w-1/5">
         <img src={iconsExpenses[`${category}`]} alt="icon-ahorro" />
       </div>
-      <div className="text-left w-full">
-        <p className="text-slate-600 font-bold">{category}</p>
-        <p className="text-slate-800">{expense}</p>
-        <p className="text-slate-800">
-          <span className="text-slate-800 font-bold">Date</span> : 29/12/22
-        </p>
+      <div className="w-3/5 flex items-center text-left justify-between">
+        <div>
+          <p className="text-slate-600 font-bold">{category}</p>
+          <p className="text-slate-800">{expense}</p>
+          <p className="text-slate-800 text-xs">
+            {date.toLocaleDateString("en-US")}
+          </p>
+        </div>
+        <div>
+          <h6 className="font-bold text-lg text-slate-800">${amount}</h6>
+        </div>
       </div>
-      <div>
-        <h6 className="font-bold text-lg text-slate-800">${amount}</h6>
-      </div>
-      <div className="flex gap-2 justify-center w-20  h-full items-center text-center  rounded-r-lg  text-white p-4 font-bold">
-        <div className="w-10 cursor-pointer">
+      <div className="flex gap-2 justify-center w-2/5 h-full items-center text-center  rounded-r-lg  text-white p-4 font-bold">
+        <div className="w-6 cursor-pointer">
           <img src={IconEdit} alt="icon-edit" onClick={handleEdit} />
         </div>
-        <div className="w-10 cursor-pointer">
+        <div className="w-6 cursor-pointer">
           <img
             src={IconRemove}
             alt="icon-remove"

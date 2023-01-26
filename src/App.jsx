@@ -13,6 +13,7 @@ function App() {
   const [totalAvailable, setTotalAvailable] = useState(budget);
   const [expenseEdit, setExpenseEdit] = useState({});
   const [percentage, setPercentage] = useState(0);
+  const [date, setDate] = useState("");
 
   const handleNewExpense = () => {
     setModal(true);
@@ -62,6 +63,7 @@ function App() {
 
   useEffect(() => {
     calcTotalSpent();
+    setDate(new Date());
   }, [expenses]);
 
   useEffect(() => {
@@ -107,6 +109,8 @@ function App() {
         expenses={expenses}
         setModal={setModal}
         expenseEdit={expenseEdit}
+        date={date}
+        setDate={setDate}
       />
     </div>
   );

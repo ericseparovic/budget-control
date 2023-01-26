@@ -10,6 +10,8 @@ function Modal({
   expenses,
   setModal,
   expenseEdit,
+  date,
+  setDate,
 }) {
   const {
     register,
@@ -22,14 +24,19 @@ function Modal({
   const onSubmit = (data) => {
     //Update
     if (data.id) {
-      const expensesUpdate = expenses.map((expenseState) =>
-        expenseState.id === data.id ? data : expenseState
-      );
+      const expensesUpdate = expenses.map((expenseState) => {
+        if (expenseState.id === data.id) {
+          return data;
+        } else {
+          expenseState;
+        }
+      });
 
       setExpenses(expensesUpdate);
     } else {
       //New expense
       data.id = nextId();
+      data.date = date;
       setExpenses([...expenses, data]);
     }
 

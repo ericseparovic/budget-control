@@ -2,13 +2,13 @@ import Expense from "./Expense";
 
 function ListExpenses({ expenses, setExpenseEdit, setModal, removeExpense }) {
   return (
-    <main className="container mt-36 mx-auto text-center w-full flex flex-col items-center">
+    <main className="container mt-36 mb-20 mx-auto text-center w-full flex flex-col items-center">
       {expenses.length > 0 ? (
         <h2 className="text-white font-bold text-xl bg-purple-700 p-2 max-w-sm w-full rounded-lg">
           Expenses
         </h2>
       ) : (
-        <h2 className="text-white font-bold text-xl bg-purple-700 p-2">
+        <h2 className="text-white font-bold text-xl bg-purple-700 p-2 max-w-sm w-full rounded-lg">
           There are no recorded expenses
         </h2>
       )}

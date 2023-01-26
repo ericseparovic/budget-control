@@ -12,7 +12,7 @@ function Header({
   percentage,
 }) {
   return (
-    <header className="bg-purple-700 mx-auto text-center p-10 h-52">
+    <header className="bg-purple-700  w-full flex items-center text-center p-10 h-52 flex-col">
       <h1 className="text-white text-3xl font-bold mb-8">Budget Control</h1>
 
       {isValidBudget ? (
