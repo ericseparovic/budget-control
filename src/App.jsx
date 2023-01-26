@@ -48,6 +48,18 @@ function App() {
     setExpenses(updateExpense);
   };
 
+  const calcPercentage = (budget, totalSpent) => {
+    let percentage =
+      budget !== 0 ? (Number(totalSpent) * 100) / Number(budget) : 0;
+
+    if (percentage > 100) {
+      setPercentage(100);
+      return;
+    }
+
+    setPercentage(percentage);
+  };
+
   useEffect(() => {
     calcTotalSpent();
   }, [expenses]);
@@ -59,6 +71,10 @@ function App() {
   useEffect(() => {
     setTotalAvailable(budget);
   }, [budget]);
+
+  useEffect(() => {
+    calcPercentage(budget, totalSpent);
+  }, [totalSpent]);
 
   return (
     <div>
