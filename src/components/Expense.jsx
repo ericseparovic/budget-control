@@ -27,7 +27,6 @@ function Expense({ data, setExpenseEdit, setModal, removeExpense }) {
     setModal(true);
     setExpenseEdit(data);
   }
-  console.log(date);
 
   return (
     <div className="max-w-sm w-full  flex m-auto gap-5 bg-white  rounded-lg shadow-2xl  h-28 items-center justify-between p-4">
