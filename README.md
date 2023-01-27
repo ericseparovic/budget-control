@@ -1,5 +1,3 @@
-# Frontend Mentor Challenges
-
-## social-proof-section-master
+## Budget-control
 
 ![Preview challenge](./src/assets/img/budget-control.png)
